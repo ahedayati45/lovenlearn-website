@@ -2280,7 +2280,7 @@ They also keep an online daily journal of what the kids ate, how much, whether t
 
 
             <!-- ===============================================================
-                 INTERACTIVE CAROUSEL IMAGE GALLERY (Loads from Image/ Folder)
+                 INTERACTIVE CAROUSEL IMAGE GALLERY (Images/ Folder)
             ================================================================ -->
 
 <details class="mobile-disclosure"><summary><span>View centre photos</span></summary>
@@ -2293,7 +2293,7 @@ They also keep an online daily journal of what the kids ate, how much, whether t
                 </div>
                 <div class="flex items-center gap-1.5">
                   <span id="carousel-counter" class="px-2.5 py-1 rounded-full bg-white/10 text-slate-200 text-[11px] font-bold">
-                    1 / 6
+                    1 / 19
                   </span>
                   <button type="button" id="carousel-autoplay-btn" onclick="toggleCarouselAutoPlay()" class="px-2.5 py-1 rounded-full bg-white/10 hover:bg-white/20 text-amber-300 text-[11px] font-bold transition-colors" title="Toggle Auto-Play">
                     ⏸ Auto
@@ -2319,10 +2319,10 @@ They also keep an online daily journal of what the kids ate, how much, whether t
                 <div class="absolute inset-x-0 bottom-0 bg-gradient-to-t from-slate-950/90 via-slate-950/50 to-transparent p-3.5 pt-8 flex items-end justify-between gap-2 pointer-events-none">
                   <div>
                     <div id="carousel-caption-title" class="font-display font-bold text-sm text-white drop-shadow">
-                      Bright &amp; Welcoming Classrooms
+                      Centre Exterior
                     </div>
                     <div id="carousel-caption-sub" class="text-[11px] text-slate-300">
-                      1 Mintleaf Gate, Unit 1 • Markham, ON
+                      Love n’ Learn Childcare Centre in Markham
                     </div>
                   </div>
                   <span class="text-[10px] font-bold text-amber-300 bg-slate-900/80 px-2 py-0.5 rounded-lg border border-white/10">
@@ -2352,14 +2352,11 @@ They also keep an online daily journal of what the kids ate, how much, whether t
               </div>
 
               <!-- Thumbnail Strip -->
-              <div id="carousel-thumbs" class="mt-3 grid grid-cols-6 gap-2">
+              <div id="carousel-thumbs" class="mt-3 flex gap-2 overflow-x-auto pb-2">
                 <!-- Populated dynamically by JS -->
               </div>
 
-              <!-- Pagination Dots -->
-              <div id="carousel-dots" class="mt-2.5 flex items-center justify-center gap-1.5">
-                <!-- Populated dynamically by JS -->
-              </div>
+            </div>
             </div>
 </div></details>
 
@@ -2657,6 +2654,21 @@ They also keep an online daily journal of what the kids ate, how much, whether t
         <button onclick="closeGalleryModal()" class="p-2 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-700 font-bold">✕</button>
       </div>
 
+      <div class="mt-6 grid grid-cols-2 sm:grid-cols-4 gap-3" aria-label="Centre photo previews">
+        <button type="button" onclick="openGalleryPhoto(1)" class="rounded-xl overflow-hidden border border-amber-100 text-left focus-visible:outline focus-visible:outline-2 focus-visible:outline-rose-500" aria-label="View Bright Playroom">
+          <img src="Images/2.jpg" alt="Bright Playroom" width="478" height="350" loading="lazy" class="w-full aspect-[4/3] object-cover" />
+        </button>
+        <button type="button" onclick="openGalleryPhoto(7)" class="rounded-xl overflow-hidden border border-amber-100 text-left focus-visible:outline focus-visible:outline-2 focus-visible:outline-rose-500" aria-label="View Toddler Classroom">
+          <img src="Images/Toddler-1.png" alt="Toddler Classroom" width="478" height="350" loading="lazy" class="w-full aspect-[4/3] object-cover" />
+        </button>
+        <button type="button" onclick="openGalleryPhoto(10)" class="rounded-xl overflow-hidden border border-amber-100 text-left focus-visible:outline focus-visible:outline-2 focus-visible:outline-rose-500" aria-label="View Preschool Classroom">
+          <img src="Images/Pre-School-2.png" alt="Preschool Classroom" width="478" height="350" loading="lazy" class="w-full aspect-[4/3] object-cover" />
+        </button>
+        <button type="button" onclick="openGalleryPhoto(14)" class="rounded-xl overflow-hidden border border-amber-100 text-left focus-visible:outline focus-visible:outline-2 focus-visible:outline-rose-500" aria-label="View Fenced Outdoor Playground">
+          <img src="Images/Playground-3-478x350.png" alt="Fenced Outdoor Playground" width="478" height="350" loading="lazy" class="w-full aspect-[4/3] object-cover" />
+        </button>
+      </div>
+
       <div class="mt-6 grid grid-cols-1 sm:grid-cols-2 gap-4">
         <div class="rounded-2xl p-5 bg-rose-50 border border-rose-100">
           <div class="flex items-center justify-between mb-2">
@@ -2755,7 +2767,7 @@ They also keep an online daily journal of what the kids ate, how much, whether t
       <div class="relative rounded-2xl overflow-hidden bg-slate-950 flex items-center justify-center max-h-[72vh] aspect-[16/10] mx-auto">
         <img
           id="lightbox-main-img"
-          src="Image/1.jpg"
+          src="Images/1.jpg"
           alt="Love n' Learn Childcare Fullscreen View"
           class="max-h-[72vh] w-auto max-w-full object-contain"
         />
@@ -2790,54 +2802,27 @@ They also keep an online daily journal of what the kids ate, how much, whether t
   ====================================================================== -->
   <script>
     // =========================================================================
-    // 0. CENTRE PHOTO CAROUSEL GALLERY CONFIGURATION (Loads from Image/ folder)
-    // =========================================================================
-    // Tip: Place your photos inside the "Image/" folder in your root directory.
-    // You can add or rename any photo filenames in the list below!
-    // Each slide automatically tries .jpg, .jpeg, .png, and .webp in "Image/".
+    // Centre photographs supplied by Love n’ Learn.
     const galleryImages = [
-      {
-        src: 'Images/1.jpg',
-        altCandidates: ['Images/1.jpeg', 'Images/1.png', 'Images/1.webp', 'Images/photo1.jpg'],
-        title: "Bright & Welcoming Classrooms",
-        subtitle: "Spacious play-based learning environment at 1 Mintleaf Gate",
-        fallbackPlaceholder: "https://placehold.co/900x560/FFF1F2/E11D48?text=Love+n'+Learn+-+Images/1.jpg"
-      },
-      {
-        src: 'Images/2.jpg',
-        altCandidates: ['Images/2.jpeg', 'Images/2.png', 'Images/2.webp', 'Images/photo2.jpg'],
-        title: "Infant & Toddler Learning Zones",
-        subtitle: "Safe, non-toxic furnishings & age-appropriate sensory toys",
-        fallbackPlaceholder: "https://placehold.co/900x560/FEF3C7/D97706?text=Love+n'+Learn+-+Images/2.jpg"
-      },
-      {
-        src: 'Images/3.jpg',
-        altCandidates: ['Images/3.jpeg', 'Images/3.png', 'Images/3.webp', 'Images/photo3.jpg'],
-        title: "Preschool & Kindergarten Readiness",
-        subtitle: "Early literacy, numeracy, arts & STEM inquiry centres",
-        fallbackPlaceholder: "https://placehold.co/900x560/DCFCE7/059669?text=Love+n'+Learn+-+Images/3.jpg"
-      },
-      {
-        src: 'Images/4.jpg',
-        altCandidates: ['Images/4.jpeg', 'Images/4.png', 'Images/4.webp', 'Images/photo4.jpg'],
-        title: "Fenced On-Site Outdoor Playground",
-        subtitle: "Daily gross-motor active play right at our Markham centre",
-        fallbackPlaceholder: "https://placehold.co/900x560/E0F2FE/0284C7?text=Love+n'+Learn+-+Images/4.jpg"
-      },
-      {
-        src: 'Images/5.jpg',
-        altCandidates: ['Images/5.jpeg', 'Images/5.png', 'Images/5.webp', 'Images/photo5.jpg'],
-        title: "Creative Arts & Circle Time",
-        subtitle: "Guided by Ontario's 'How Does Learning Happen?' pedagogy",
-        fallbackPlaceholder: "https://placehold.co/900x560/F3E8FF/7C3AED?text=Love+n'+Learn+-+Images/5.jpg"
-      },
-      {
-        src: 'Images/6.jpg',
-        altCandidates: ['Images/6.jpeg', 'Images/6.png', 'Images/6.webp', 'Images/photo6.jpg'],
-        title: "100% Nut-Free Kitchen & Cozy Rest Areas",
-        subtitle: "Freshly cooked daily meals & peaceful individual sleep cots",
-        fallbackPlaceholder: "https://placehold.co/900x560/FFEDD5/EA580C?text=Love+n'+Learn+-+Images/6.jpg"
-      }
+      { src: 'Images/1.jpg', title: 'Centre Exterior', subtitle: 'Love n’ Learn Childcare Centre in Markham' },
+      { src: 'Images/2.jpg', title: 'Bright Playroom', subtitle: 'Child-sized tables and space for learning through play' },
+      { src: 'Images/3.jpg', title: 'Classroom Hallway', subtitle: 'Open hallway with storage for children’s belongings' },
+      { src: 'Images/4.jpg', title: 'Learning Room', subtitle: 'Tables, activity areas, and a colourful play rug' },
+      { src: 'Images/5.jpg', title: 'Sunlit Classroom', subtitle: 'A welcoming room with child-sized tables and learning materials' },
+      { src: 'Images/6.jpg', title: 'Play-Based Classroom', subtitle: 'Bright learning areas with toys and activity tables' },
+      { src: 'Images/22.jpg', title: 'Outdoor Play Area', subtitle: 'Room for active play outside' },
+      { src: 'Images/Toddler-1.png', title: 'Toddler Classroom', subtitle: 'A bright toddler space with tables and play areas' },
+      { src: 'Images/Toddler-1-478x350.png', title: 'Toddler Play Area', subtitle: 'Natural light and hands-on activities in the toddler room' },
+      { src: 'Images/Toddler-2.png', title: 'Toddler Learning Room', subtitle: 'Child-sized furniture and space to explore' },
+      { src: 'Images/Pre-School-2.png', title: 'Preschool Classroom', subtitle: 'Colourful learning areas and activity tables' },
+      { src: 'Images/PreSchool-2-2-478x350.png', title: 'Preschool Activity Space', subtitle: 'Tables, toys, and classroom materials' },
+      { src: 'Images/PreSchool-2-478x350.png', title: 'Preschool Learning Room', subtitle: 'Open room for creative activities' },
+      { src: 'Images/Sensory-Motor-Skills-478x350.png', title: 'Sensory Play Area', subtitle: 'Colourful rug and materials for hands-on exploration' },
+      { src: 'Images/Playground-3-478x350.png', title: 'Fenced Outdoor Playground', subtitle: 'Shaded play space beside the centre' },
+      { src: 'Images/kitchen.png', title: 'Centre Kitchen', subtitle: 'Space where meals are prepared' },
+      { src: 'Images/Kids-Washroom.png', title: 'Children’s Washroom', subtitle: 'Washroom with child-sized fixtures' },
+      { src: 'Images/Lavetory-478x350.png', title: 'Child-Sized Sinks', subtitle: 'Sinks and mirrors for everyday routines' },
+      { src: 'Images/Washroom-478x350.png', title: 'Children’s Washroom Stalls', subtitle: 'Child-sized washroom stalls' }
     ];
 
     let currentCarouselIdx = 0;
@@ -2845,22 +2830,9 @@ They also keep an online daily journal of what the kids ate, how much, whether t
     let isCarouselAutoPlaying = true;
     let isCarouselHovered = false;
 
-    // Smart image loader that tries Image/X.jpg -> .jpeg -> .png -> .webp -> placeholder
     function setSmartImageSrc(imgElement, slideObj) {
-      const candidates = [slideObj.src, ...(slideObj.altCandidates || [])];
-      let attemptIndex = 0;
-
-      imgElement.onerror = function () {
-        attemptIndex++;
-        if (attemptIndex < candidates.length) {
-          imgElement.src = candidates[attemptIndex];
-        } else {
-          imgElement.onerror = null;
-          imgElement.src = slideObj.fallbackPlaceholder;
-        }
-      };
-
-      imgElement.src = candidates[0];
+      imgElement.onerror = null;
+      imgElement.src = slideObj.src;
     }
 
     function renderCarouselGallery() {
@@ -2873,7 +2845,6 @@ They also keep an online daily journal of what the kids ate, how much, whether t
       const titleEl = document.getElementById('carousel-caption-title');
       const subEl = document.getElementById('carousel-caption-sub');
       const thumbsContainer = document.getElementById('carousel-thumbs');
-      const dotsContainer = document.getElementById('carousel-dots');
 
       if (mainImg) {
         mainImg.alt = currentSlide.title;
@@ -2909,7 +2880,7 @@ They also keep an online daily journal of what the kids ate, how much, whether t
               type="button"
               onclick="goToCarouselSlide(${idx})"
               aria-label="View Photo ${idx + 1}"
-              class="relative rounded-xl overflow-hidden aspect-[4/3] border-2 transition-all focus:outline-none ${
+              class="relative shrink-0 w-20 rounded-xl overflow-hidden aspect-[4/3] border-2 transition-all focus:outline-none ${
                 isActive
                   ? 'border-amber-400 ring-2 ring-amber-400/40 scale-[1.03]'
                   : 'border-white/10 opacity-60 hover:opacity-100'
@@ -2930,22 +2901,6 @@ They also keep an online daily journal of what the kids ate, how much, whether t
         });
       }
 
-      // Render Dots
-      if (dotsContainer) {
-        dotsContainer.innerHTML = galleryImages.map((_, idx) => {
-          const isActive = idx === currentCarouselIdx;
-          return `
-            <button
-              type="button"
-              onclick="goToCarouselSlide(${idx})"
-              aria-label="Go to slide ${idx + 1}"
-              class="h-2 rounded-full transition-all ${
-                isActive ? 'w-6 bg-amber-400' : 'w-2 bg-white/30 hover:bg-white/60'
-              }"
-            ></button>
-          `;
-        }).join('');
-      }
     }
 
     function changeCarouselSlide(step) {
@@ -3805,6 +3760,12 @@ They also keep an online daily journal of what the kids ate, how much, whether t
     // 9. Modals & Clipboard Helper
     function openGalleryModal() {
       document.getElementById('gallery-modal').classList.remove('hidden');
+    }
+
+    function openGalleryPhoto(index) {
+      closeGalleryModal();
+      goToCarouselSlide(index);
+      openCarouselLightbox();
     }
 
     function closeGalleryModal() {
