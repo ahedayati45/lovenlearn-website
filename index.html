@@ -14,9 +14,6 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Quicksand:wght@600;700;800&display=swap" rel="stylesheet">
 
-  <!-- Official Procare Connect / Kinderlime Online Enrollment Button Styles -->
-  <style>@import url('https://schools.procareconnect.com/assets/button/kinderlime-button.css');</style>
-
   <!-- Tailwind Configuration -->
   <script>
     tailwind.config = {
@@ -97,22 +94,6 @@
     ::-webkit-scrollbar-thumb:hover {
       background: #94A3B8;
     }
-    /* Hide only the non-clickable decorative top icon from Kinderlime while keeping the clickable button active */
-    .kinderlime-button-wrapper__icon {
-      display: none !important;
-    }
-    .kinderlime-button-wrapper {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      margin: 0 auto;
-    }
-    .kinderlime-button {
-      display: inline-block;
-      cursor: pointer;
-    }
-
     /* Banner photos: paths are relative to this HTML file. Only the photo layer
        is faded; headings, links and buttons retain their full contrast. */
     .home-hero { isolation: isolate; }
@@ -277,7 +258,7 @@
         <div class="hidden sm:flex items-center gap-3">
           <a href="https://schools.procareconnect.com/register/5098765a-de15-41f0-9ca3-ad32ee79e453" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl text-sm font-bold text-white bg-gradient-to-r from-rose-500 to-orange-500 hover:from-rose-600 hover:to-orange-600 shadow-md hover:shadow-lg transition-all active:scale-95">
             <span>📝</span>
-            <span>Register in Waiting List</span>
+            <span>Join the Waiting List</span>
           </a>
         </div>
 
@@ -317,7 +298,7 @@
       </div>
       <div class="mt-4 pt-4 border-t border-slate-100">
         <a href="https://schools.procareconnect.com/register/5098765a-de15-41f0-9ca3-ad32ee79e453" target="_blank" rel="noopener noreferrer" onclick="closeMobileMenu();" class="w-full py-3 px-4 rounded-xl font-bold text-white bg-gradient-to-r from-rose-500 to-orange-500 shadow-md flex items-center justify-center gap-2">
-          <span>📝</span> Register in Waiting List
+          <span>📝</span> Join the Waiting List
         </a>
       </div>
       <div class="mt-4 bg-slate-50 rounded-xl p-3 text-xs text-slate-600 flex flex-col gap-1">
@@ -366,7 +347,7 @@
           <!-- Primary & Secondary CTAs -->
           <div class="mt-8 flex flex-col sm:flex-row flex-wrap items-stretch sm:items-center gap-3.5">
             <a href="https://schools.procareconnect.com/register/5098765a-de15-41f0-9ca3-ad32ee79e453" target="_blank" rel="noopener noreferrer" class="px-7 py-4 rounded-2xl font-display font-bold text-base sm:text-lg text-white bg-gradient-to-r from-rose-500 to-orange-500 hover:from-rose-600 hover:to-orange-600 shadow-warm hover:shadow-xl transition-all flex items-center justify-center gap-2.5 group">
-              <span>Book a Tour / Online Enrollment</span>
+              <span>Join the Waiting List or Book a Tour</span>
               <svg class="w-5 h-5 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M13 7l5 5m0 0l-5 5m5-5H6"/>
               </svg>
@@ -1968,11 +1949,11 @@ They also keep an online daily journal of what the kids ate, how much, whether t
         <!-- FAQ 5 -->
         <div class="bg-cream rounded-2xl border border-amber-200/80 overflow-hidden">
           <button onclick="toggleFaq(4)" class="w-full px-6 py-4 text-left flex items-center justify-between gap-4 font-display font-bold text-base sm:text-lg text-slate-900 hover:bg-amber-50/50 transition-colors">
-            <span>How do we book a tour or register for the waitlist?</span>
+            <span>How do we book a tour or join the waiting list?</span>
             <span id="faq-icon-4" class="text-rose-500 font-extrabold text-xl transition-transform">+</span>
           </button>
           <div id="faq-ans-4" class="hidden px-6 pb-5 text-sm text-slate-600 leading-relaxed border-t border-amber-100 pt-3">
-            Simply click our <strong>Register in Waiting List</strong> or <strong>Book a Tour / Online Enrollment</strong> button to register through our official Procare Connect portal (no fee is charged to place a child on our waiting list) or call us directly at <strong>(905) 201-4000</strong>.
+            Use the <strong>Join the Waiting List or Book a Tour</strong> button to submit a request through Procare Connect, or call <strong>(905) 201-4000</strong>. There is no fee to join the waiting list. Submitting a request does not enroll your child.
           </div>
         </div>
 
@@ -1981,20 +1962,20 @@ They also keep an online daily journal of what the kids ate, how much, whether t
   </section>
 
   <!-- =====================================================================
-       11. BOOK A TOUR / ONLINE ENROLLMENT & CONTACT SECTION
+       11. WAITING LIST, TOURS & CONTACT SECTION
   ====================================================================== -->
   <section id="contact" class="py-16 md:py-24 bg-cream border-t border-amber-100 scroll-mt-16">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       
       <div class="text-center max-w-3xl mx-auto mb-12">
         <span class="inline-block px-3.5 py-1 rounded-full bg-rose-100 text-rose-700 font-bold text-xs uppercase tracking-wider">
-          We Are Now Registering!
+          Now Accepting Waiting List Requests
         </span>
         <h2 class="mt-3 font-display font-extrabold text-3xl sm:text-4xl text-slate-900">
-          Book a Tour, Enroll Online, or Get in Touch
+          Join the Waiting List, Book a Tour, or Get in Touch
         </h2>
         <p class="mt-3 text-slate-600 text-base sm:text-lg">
-          We would love for you to come visit our bright and spacious classrooms at <strong>1 Mintleaf Gate, Unit 1, Markham, ON L3P 5X4</strong>. Call us at <a href="tel:9052014000" class="text-rose-600 font-bold underline">(905) 201-4000</a> or use our official online enrollment &amp; tour booking link below!
+          We would love for you to come visit our bright and spacious classrooms at <strong>1 Mintleaf Gate, Unit 1, Markham, ON L3P 5X4</strong>. Call us at <a href="tel:9052014000" class="text-rose-600 font-bold underline">(905) 201-4000</a> or use the waiting list and tour request link below!
         </p>
       </div>
 
@@ -2003,46 +1984,34 @@ They also keep an online daily journal of what the kids ate, how much, whether t
         <!-- LEFT COLUMN (7 Cols): SEPARATE WAITING LIST / TOUR CARD & GENERAL QUESTION CARD -->
         <div class="lg:col-span-7 space-y-8">
           
-          <!-- CARD 1: OFFICIAL ONLINE ENROLLMENT / BOOK A TOUR -->
+          <!-- CARD 1: WAITING LIST / BOOK A TOUR -->
           <div id="booking-form-card" class="bg-white rounded-3xl p-6 sm:p-8 lg:p-10 border-2 border-amber-200/80 shadow-soft">
             
             <div class="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-rose-50 border border-rose-200 text-rose-700 text-xs font-bold mb-4">
-              <span>📅</span> Official Online Tour &amp; Waiting List Portal
+              <span>📅</span> Waiting List &amp; Tour Request Portal
             </div>
 
             <h3 class="font-display font-extrabold text-2xl sm:text-3xl text-slate-900">
-              Schedule a Classroom Tour or Register in Waiting List
+              Book a Classroom Tour or Join the Waiting List
             </h3>
             <p class="text-sm sm:text-base text-slate-600 mt-2 leading-relaxed">
               Come meet our educators, tour our play-based classrooms and fenced outdoor playground, and learn about our CWELCC tuition rates.
             </p>
 
-            <!-- Primary Prominent Clickable CTA Box + Official Kinderlime Button Link (Without Default Top Procare Icon) -->
+            <!-- Waiting list and tour request action -->
             <div class="mt-7 p-6 sm:p-8 rounded-3xl bg-gradient-to-br from-amber-50/90 via-rose-50/60 to-sky-50/80 border-2 border-amber-200/90 flex flex-col items-center justify-center text-center shadow-sm space-y-5">
               
               <!-- Large Prominent Styled Clickable Link Button -->
               <a href="https://schools.procareconnect.com/register/5098765a-de15-41f0-9ca3-ad32ee79e453" target="_blank" rel="noopener noreferrer" class="w-full sm:w-auto px-8 py-4 rounded-2xl font-display font-extrabold text-base sm:text-lg text-white bg-gradient-to-r from-rose-500 to-orange-500 hover:from-rose-600 hover:to-orange-600 shadow-warm hover:shadow-xl transition-all inline-flex items-center justify-center gap-3 group">
                 <span>📅</span>
-                <span>Click Here for Register in Waiting List &amp; Book a Tour</span>
+                <span>Join the Waiting List or Book a Tour</span>
                 <svg class="w-5 h-5 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M13 7l5 5m0 0l-5 5m5-5H6"/>
                 </svg>
               </a>
 
-              <!-- Official Kinderlime / Procare Connect Embed Snippet (Clickable Link Preserved, Top Decorative Icon Hidden) -->
-              <div class="pt-2">
-                <div class="kinderlime-button-wrapper">
-                  <div class="kinderlime-button-wrapper__title font-display font-bold text-slate-700 text-sm mb-2">
-                    Click below for<br>Online Enrollment
-                  </div>
-                  <a href="https://schools.procareconnect.com/register/5098765a-de15-41f0-9ca3-ad32ee79e453" target="_blank" rel="noopener noreferrer" class="kinderlime-button">
-                    <div class="kinderlime-button__image"></div>
-                  </a>
-                </div>
-              </div>
-
               <p class="text-xs text-slate-500 max-w-md">
-                Opens our secure <strong>Procare Connect</strong> waiting list registration &amp; tour scheduling form in a new tab.
+                Opens our waiting list and tour request form in a new tab. Joining the waiting list does not enroll your child.
               </p>
             </div>
           </div>
@@ -2127,7 +2096,7 @@ They also keep an online daily journal of what the kids ate, how much, whether t
                     Thank You! Your Message Has Been Received
                   </h4>
                   <p class="text-sm text-emerald-900 mt-1">
-                    Our team at Love n' Learn Childcare will contact you shortly. To register in our waiting list or schedule a tour right away, click the button in the section above!
+                    Our team at Love n' Learn Childcare will contact you shortly. To join our waiting list or schedule a tour right away, click the button in the section above!
                   </p>
                   <div class="mt-4 p-3.5 bg-white rounded-xl border border-emerald-200 text-xs space-y-1 text-slate-600" id="confirm-summary">
                   </div>
@@ -2136,7 +2105,7 @@ They also keep an online daily journal of what the kids ate, how much, whether t
                       Send Another Question
                     </button>
                     <a href="https://schools.procareconnect.com/register/5098765a-de15-41f0-9ca3-ad32ee79e453" target="_blank" rel="noopener noreferrer" class="px-4 py-2 rounded-xl bg-rose-600 text-white text-xs font-bold hover:bg-rose-700">
-                      📅 Register in Waiting List &amp; Book a Tour ↗
+                      📅 Join the Waiting List or Book a Tour ↗
                     </a>
                   </div>
                 </div>
@@ -2549,7 +2518,7 @@ They also keep an online daily journal of what the kids ate, how much, whether t
           <span>•</span>
           <a href="#testimonials" class="hover:text-slate-300">Testimonials</a>
           <span>•</span>
-          <a href="https://schools.procareconnect.com/register/5098765a-de15-41f0-9ca3-ad32ee79e453" target="_blank" rel="noopener noreferrer" class="hover:text-slate-300">Register in Waiting List</a>
+          <a href="https://schools.procareconnect.com/register/5098765a-de15-41f0-9ca3-ad32ee79e453" target="_blank" rel="noopener noreferrer" class="hover:text-slate-300">Join the Waiting List</a>
         </div>
       </div>
     </div>
