@@ -125,39 +125,8 @@
       opacity: 0.16;
       pointer-events: none;
     }
-    .banner-moments { padding: 48px 24px; background: #FFFDF8; }
-    .banner-moments-inner { max-width: 1216px; margin: 0 auto; }
-    .banner-moments-heading {
-      margin: 0 0 8px; color: #1E293B;
-      font-family: "Quicksand", sans-serif; font-weight: 800;
-      font-size: clamp(1.5rem, 3vw, 2rem); text-align: center;
-    }
-    .banner-moments-intro {
-      margin: 0 auto 24px; max-width: 600px; text-align: center;
-      color: #475569; line-height: 1.7;
-    }
-    .banner-moments-grid {
-      display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 20px;
-    }
-    .banner-moment {
-      margin: 0; overflow: hidden; border-radius: 24px;
-      border: 1px solid #FDE6D5; background: white;
-      box-shadow: 0 12px 32px -8px rgba(30, 41, 59, 0.07);
-    }
-    .banner-moment img {
-      display: block; width: 100%; height: auto; aspect-ratio: 1600 / 550;
-      object-fit: cover;
-    }
-    .banner-moment figcaption { padding: 18px 20px; }
-    .banner-moment h3 {
-      margin: 0 0 6px; font-family: "Quicksand", sans-serif;
-      font-size: 1.125rem; font-weight: 700; color: #1E293B;
-    }
-    .banner-moment p { margin: 0; font-size: 0.875rem; line-height: 1.7; color: #475569; }
     @media (max-width: 767px) {
       .home-hero::before { background-position: 55% top; background-size: auto 600px; }
-      .banner-moments { padding: 36px 16px; }
-      .banner-moments-grid { grid-template-columns: 1fr; gap: 16px; }
     }
 
     .testimonial-slides {
@@ -583,37 +552,6 @@
         </div>
       </div>
 
-    </div>
-  </section>
-
-  <!-- Banner photos: playful learning details, rather than photographs of the centre. -->
-  <section class="banner-moments" aria-labelledby="banner-moments-title">
-    <div class="banner-moments-inner">
-      <h2 id="banner-moments-title" class="banner-moments-heading">Little Hands. Big Discoveries.</h2>
-      <p class="banner-moments-intro">Room to imagine, create, and grow through the everyday joy of play.</p>
-      <div class="banner-moments-grid">
-        <figure class="banner-moment">
-          <img src="images/banner/play-dough-star.jpg" alt="A child cutting a star from colourful pink play dough" width="1600" height="550" loading="lazy" decoding="async" />
-          <figcaption>
-            <h3>Discover Through Play</h3>
-            <p>Hands-on exploration makes space for curiosity and new discoveries.</p>
-          </figcaption>
-        </figure>
-        <figure class="banner-moment">
-          <img src="images/banner/play-dough-creations.jpg" alt="Little hands making colourful play-dough shapes, including a house and sunshine" width="1600" height="550" loading="lazy" decoding="async" />
-          <figcaption>
-            <h3>Let Creativity Shine</h3>
-            <p>Colours, shapes, and imagination bring little ideas to life.</p>
-          </figcaption>
-        </figure>
-        <figure class="banner-moment">
-          <img src="images/banner/love-blocks.jpg" alt="Four colourful foam blocks spelling LOVE" width="1600" height="550" loading="lazy" decoding="async" />
-          <figcaption>
-            <h3>Grow With Love</h3>
-            <p>A caring foundation for confidence, connection, and a love of learning.</p>
-          </figcaption>
-        </figure>
-      </div>
     </div>
   </section>
 
