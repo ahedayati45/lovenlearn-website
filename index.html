@@ -159,6 +159,21 @@
       .banner-moments { padding: 36px 16px; }
       .banner-moments-grid { grid-template-columns: 1fr; gap: 16px; }
     }
+
+    .testimonial-slides {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 24px;
+      align-items: start;
+      touch-action: pan-y;
+    }
+    .testimonial-slides .review-card[hidden] { display: none !important; }
+    @media (max-width: 1023px) {
+      .testimonial-slides { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    }
+    @media (max-width: 767px) {
+      .testimonial-slides { grid-template-columns: minmax(0, 1fr); }
+    }
   </style>
 </head>
 <body class="antialiased selection:bg-coral-100 selection:text-coral-600">
@@ -1277,7 +1292,7 @@
   <!-- =====================================================================
        8. PARENT TESTIMONIALS
   ====================================================================== -->
-  <section id="testimonials" class="py-16 md:py-24 bg-cream border-t border-amber-100 scroll-mt-20">
+  <section id="testimonials" aria-roledescription="carousel" aria-labelledby="testimonials-heading" class="py-16 md:py-24 bg-cream border-t border-amber-100 scroll-mt-20">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       
       <div class="flex flex-col lg:flex-row lg:items-end justify-between gap-6 mb-10">
@@ -1285,18 +1300,18 @@
           <div class="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-rose-100 text-rose-700 font-bold text-xs uppercase tracking-wider">
             <span>⭐</span> From Our Markham Families
           </div>
-          <h2 class="mt-3 font-display font-extrabold text-3xl sm:text-4xl text-slate-900">
+          <h2 id="testimonials-heading" class="mt-3 font-display font-extrabold text-3xl sm:text-4xl text-slate-900">
             Testimonials
           </h2>
           <p class="mt-2 text-slate-600 text-base">
-            Read 22 testimonials from families about their experiences at Love n' Learn Childcare.
+            Hear from families about their experiences at Love n' Learn Childcare.
           </p>
         </div>
 
         <!-- Interactive Category Filter Buttons -->
         <div class="flex flex-wrap gap-2">
           <button onclick="filterReviews('all')" id="rev-filter-all" class="rev-filter-btn px-3.5 py-2 rounded-xl text-xs font-bold bg-slate-900 text-white transition-all">
-            All Testimonials (22)
+            All Testimonials
           </button>
           <button onclick="filterReviews('teachers')" id="rev-filter-teachers" class="rev-filter-btn px-3.5 py-2 rounded-xl text-xs font-bold bg-white text-slate-700 border border-slate-200 hover:bg-rose-50 transition-all">
             👩‍🏫 Teachers &amp; Care
@@ -1313,9 +1328,9 @@
         </div>
       </div>
 
-      <!-- Testimonials supplied by families (22 reviews) -->
-      <div id="reviews-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 items-start">
-        <article data-tags="all teachers preschool" class="review-card bg-white rounded-3xl p-6 sm:p-7 shadow-soft border border-rose-100 flex flex-col">
+      <!-- Family testimonial carousel -->
+      <div id="reviews-grid" class="testimonial-slides" tabindex="0" aria-label="Testimonials. Use the Left and Right Arrow keys to browse.">
+        <article aria-roledescription="slide" data-tags="all teachers preschool" class="review-card bg-white rounded-3xl p-6 sm:p-7 shadow-soft border border-rose-100 flex flex-col">
           <div class="flex items-center gap-3 mb-4">
             <div aria-hidden="true" class="w-12 h-12 shrink-0 rounded-2xl bg-gradient-to-br from-rose-500 to-pink-500 text-white font-display font-bold text-lg flex items-center justify-center shadow-sm">HH</div>
             <div class="min-w-0">
@@ -1323,12 +1338,13 @@
               <span class="text-xs text-slate-500 font-medium">Parent Testimonial</span>
             </div>
           </div>
+          <div class="mb-4 text-amber-500 tracking-wider" role="img" aria-label="5 out of 5 stars">★★★★★</div>
           <blockquote class="text-slate-700 text-sm leading-relaxed space-y-3">
               <p>My children both attended preschool program at Love N Learn and had a really positive experience there. The teachers are very patient and caring, and my kids always felt comfortable and happy going to school. The supervisor and staff were also friendly and supportive, which made everything much easier for us as parents. We’re very thankful for all the care and love they received here.</p>
           </blockquote>
         </article>
 
-        <article data-tags="all teachers" class="review-card bg-white rounded-3xl p-6 sm:p-7 shadow-soft border border-rose-100 flex flex-col">
+        <article hidden aria-roledescription="slide" data-tags="all teachers" class="review-card bg-white rounded-3xl p-6 sm:p-7 shadow-soft border border-rose-100 flex flex-col">
           <div class="flex items-center gap-3 mb-4">
             <div aria-hidden="true" class="w-12 h-12 shrink-0 rounded-2xl bg-gradient-to-br from-amber-500 to-orange-500 text-white font-display font-bold text-lg flex items-center justify-center shadow-sm">SC</div>
             <div class="min-w-0">
@@ -1336,12 +1352,13 @@
               <span class="text-xs text-slate-500 font-medium">Parent Testimonial</span>
             </div>
           </div>
+          <div class="mb-4 text-amber-500 tracking-wider" role="img" aria-label="5 out of 5 stars">★★★★★</div>
           <blockquote class="text-slate-700 text-sm leading-relaxed space-y-3">
               <p>We&#x27;re very grateful that we had the chance to be part of the Love n Learn family for several years. Ms. Maryam and Mr. Labib, along with staff like Ms. Rajveer, Ms. Sukveer, Ms. Esther made a big difference in ensuring we felt comfortable leaving our child in their care. They provided the utmost love and care to all the children and always gave us the time of day to chat if we had any questions or concerns. Thank you to everyone at Love n Learn for your dedication! I wouldn&#x27;t hesitate to recommend Love n Learn to any of my friends and family.</p>
           </blockquote>
         </article>
 
-        <article data-tags="all teachers infant-toddler" class="review-card bg-white rounded-3xl p-6 sm:p-7 shadow-soft border border-rose-100 flex flex-col">
+        <article hidden aria-roledescription="slide" data-tags="all teachers infant-toddler" class="review-card bg-white rounded-3xl p-6 sm:p-7 shadow-soft border border-rose-100 flex flex-col">
           <div class="flex items-center gap-3 mb-4">
             <div aria-hidden="true" class="w-12 h-12 shrink-0 rounded-2xl bg-gradient-to-br from-emerald-500 to-teal-600 text-white font-display font-bold text-lg flex items-center justify-center shadow-sm">PG</div>
             <div class="min-w-0">
@@ -1349,13 +1366,14 @@
               <span class="text-xs text-slate-500 font-medium">Parent Testimonial</span>
             </div>
           </div>
+          <div class="mb-4 text-amber-500 tracking-wider" role="img" aria-label="5 out of 5 stars">★★★★★</div>
           <blockquote class="text-slate-700 text-sm leading-relaxed space-y-3">
               <p>We loved our experience at Love &amp; Learn! Our daughter Angela was in the infant room and absolutely adored her teachers and all the fun daily activities. Everyone there is so kind, caring, and patient — we could see how happy and comfortable she was every day.</p>
               <p>We only had to leave because we got an offer from a daycare right across the street. It was such a hard decision because Love &amp; Learn is truly wonderful. We’re so grateful for all the love and care Angela received! 💕</p>
           </blockquote>
         </article>
 
-        <article data-tags="all teachers meals" class="review-card bg-white rounded-3xl p-6 sm:p-7 shadow-soft border border-rose-100 flex flex-col">
+        <article hidden aria-roledescription="slide" data-tags="all teachers meals" class="review-card bg-white rounded-3xl p-6 sm:p-7 shadow-soft border border-rose-100 flex flex-col">
           <div class="flex items-center gap-3 mb-4">
             <div aria-hidden="true" class="w-12 h-12 shrink-0 rounded-2xl bg-gradient-to-br from-sky-500 to-indigo-500 text-white font-display font-bold text-lg flex items-center justify-center shadow-sm">NF</div>
             <div class="min-w-0">
@@ -1363,12 +1381,13 @@
               <span class="text-xs text-slate-500 font-medium">Parent Testimonial</span>
             </div>
           </div>
+          <div class="mb-4 text-amber-500 tracking-wider" role="img" aria-label="5 out of 5 stars">★★★★★</div>
           <blockquote class="text-slate-700 text-sm leading-relaxed space-y-3">
               <p>We had a wonderful experience with this daycare. The teachers were kind, the schedule well organized, and the environment very clean. Special thanks to Mr. Labib, the supervisor, for being so supportive and helpful. We are moving our daughter to a daycare within walking distance from home, but we truly appreciate all the care she received here.</p>
           </blockquote>
         </article>
 
-        <article data-tags="all teachers" class="review-card bg-white rounded-3xl p-6 sm:p-7 shadow-soft border border-rose-100 flex flex-col">
+        <article hidden aria-roledescription="slide" data-tags="all teachers" class="review-card bg-white rounded-3xl p-6 sm:p-7 shadow-soft border border-rose-100 flex flex-col">
           <div class="flex items-center gap-3 mb-4">
             <div aria-hidden="true" class="w-12 h-12 shrink-0 rounded-2xl bg-gradient-to-br from-rose-500 to-pink-500 text-white font-display font-bold text-lg flex items-center justify-center shadow-sm">RC</div>
             <div class="min-w-0">
@@ -1376,12 +1395,13 @@
               <span class="text-xs text-slate-500 font-medium">Parent Testimonial</span>
             </div>
           </div>
+          <div class="mb-4 text-amber-500 tracking-wider" role="img" aria-label="5 out of 5 stars">★★★★★</div>
           <blockquote class="text-slate-700 text-sm leading-relaxed space-y-3">
               <p>We are very grateful to Love n Learn for the care, warmth, and support they provided during our child’s time there. The teachers are dedicated, nurturing, and create a safe, loving environment where children grow with confidence and curiosity. We truly appreciate the engaging activities and the thoughtful communication with parents. Love n Learn has been a wonderful part of our child’s early years, and we highly recommend them.</p>
           </blockquote>
         </article>
 
-        <article data-tags="all teachers" class="review-card bg-white rounded-3xl p-6 sm:p-7 shadow-soft border border-rose-100 flex flex-col">
+        <article hidden aria-roledescription="slide" data-tags="all teachers" class="review-card bg-white rounded-3xl p-6 sm:p-7 shadow-soft border border-rose-100 flex flex-col">
           <div class="flex items-center gap-3 mb-4">
             <div aria-hidden="true" class="w-12 h-12 shrink-0 rounded-2xl bg-gradient-to-br from-amber-500 to-orange-500 text-white font-display font-bold text-lg flex items-center justify-center shadow-sm">FM</div>
             <div class="min-w-0">
@@ -1389,12 +1409,13 @@
               <span class="text-xs text-slate-500 font-medium">Parent Testimonial</span>
             </div>
           </div>
+          <div class="mb-4 text-amber-500 tracking-wider" role="img" aria-label="5 out of 5 stars">★★★★★</div>
           <blockquote class="text-slate-700 text-sm leading-relaxed space-y-3">
               <p>Love and Learn is a wonderful daycare! My daughter attended for few months and had a wonderful experience. The staff are incredibly caring and attentive, and they truly love the children. My daughter learned so much and made great progress, thanks to their nurturing environment. We are so grateful for the love and support Love and Learn provided.</p>
           </blockquote>
         </article>
 
-        <article data-tags="all teachers infant-toddler meals" class="review-card bg-white rounded-3xl p-6 sm:p-7 shadow-soft border border-rose-100 flex flex-col">
+        <article hidden aria-roledescription="slide" data-tags="all teachers infant-toddler meals" class="review-card bg-white rounded-3xl p-6 sm:p-7 shadow-soft border border-rose-100 flex flex-col">
           <div class="flex items-center gap-3 mb-4">
             <div aria-hidden="true" class="w-12 h-12 shrink-0 rounded-2xl bg-gradient-to-br from-emerald-500 to-teal-600 text-white font-display font-bold text-lg flex items-center justify-center shadow-sm">CE</div>
             <div class="min-w-0">
@@ -1402,12 +1423,13 @@
               <span class="text-xs text-slate-500 font-medium">Parent Testimonial</span>
             </div>
           </div>
+          <div class="mb-4 text-amber-500 tracking-wider" role="img" aria-label="5 out of 5 stars">★★★★★</div>
           <blockquote class="text-slate-700 text-sm leading-relaxed space-y-3">
               <p>I am Nurcansu E. I can say about this daycare center that it is really more than a daycare center. Every individual in the nursery is friendly, approachable and truly loving, like a family. With its quality education, healthy food and clean classrooms, it is the only place where I can safely leave my child. All the management and teachers are wonderful people. My son is 27 months old and could not speak, but since he started at this daycare center, he is talking and his movements have changed a lot more. I am very lucky to join the love n learn family.</p>
           </blockquote>
         </article>
 
-        <article data-tags="all teachers meals" class="review-card bg-white rounded-3xl p-6 sm:p-7 shadow-soft border border-rose-100 flex flex-col">
+        <article hidden aria-roledescription="slide" data-tags="all teachers meals" class="review-card bg-white rounded-3xl p-6 sm:p-7 shadow-soft border border-rose-100 flex flex-col">
           <div class="flex items-center gap-3 mb-4">
             <div aria-hidden="true" class="w-12 h-12 shrink-0 rounded-2xl bg-gradient-to-br from-sky-500 to-indigo-500 text-white font-display font-bold text-lg flex items-center justify-center shadow-sm">CL</div>
             <div class="min-w-0">
@@ -1415,6 +1437,7 @@
               <span class="text-xs text-slate-500 font-medium">Parent Testimonial</span>
             </div>
           </div>
+          <div class="mb-4 text-amber-500 tracking-wider" role="img" aria-label="5 out of 5 stars">★★★★★</div>
           <blockquote class="text-slate-700 text-sm leading-relaxed space-y-3">
               <p>Love n’ Learn Childcare Centre is a wonderful place full of love and learning!</p>
               <p>I am very satisfied with the environment and the care provided by the staff. The teachers are incredibly caring and offer attentive support and rich learning opportunities for the children.</p>
@@ -1429,7 +1452,7 @@
           </blockquote>
         </article>
 
-        <article data-tags="all teachers infant-toddler" class="review-card bg-white rounded-3xl p-6 sm:p-7 shadow-soft border border-rose-100 flex flex-col">
+        <article hidden aria-roledescription="slide" data-tags="all teachers infant-toddler" class="review-card bg-white rounded-3xl p-6 sm:p-7 shadow-soft border border-rose-100 flex flex-col">
           <div class="flex items-center gap-3 mb-4">
             <div aria-hidden="true" class="w-12 h-12 shrink-0 rounded-2xl bg-gradient-to-br from-rose-500 to-pink-500 text-white font-display font-bold text-lg flex items-center justify-center shadow-sm">JN</div>
             <div class="min-w-0">
@@ -1437,12 +1460,13 @@
               <span class="text-xs text-slate-500 font-medium">Parent Testimonial</span>
             </div>
           </div>
+          <div class="mb-4 text-amber-500 tracking-wider" role="img" aria-label="5 out of 5 stars">★★★★★</div>
           <blockquote class="text-slate-700 text-sm leading-relaxed space-y-3">
               <p>I only have great things to say about this daycare. The staff is amazing and I feel that my son is so loved. He has been going to this daycare since he was 12 months old and the Infant Room was so good with him for that transition. He is now in the Toddler Room and loves going every day. The teachers are absolutely amazing going above and beyond making sure the kids are safe, learning new things every day and feeling loved. Every day we are greeted by smiles and a warm welcome. Thank you Love n Learn! Your efforts don’t go unnoticed.</p>
           </blockquote>
         </article>
 
-        <article data-tags="all teachers preschool" class="review-card bg-white rounded-3xl p-6 sm:p-7 shadow-soft border border-rose-100 flex flex-col">
+        <article hidden aria-roledescription="slide" data-tags="all teachers preschool" class="review-card bg-white rounded-3xl p-6 sm:p-7 shadow-soft border border-rose-100 flex flex-col">
           <div class="flex items-center gap-3 mb-4">
             <div aria-hidden="true" class="w-12 h-12 shrink-0 rounded-2xl bg-gradient-to-br from-amber-500 to-orange-500 text-white font-display font-bold text-lg flex items-center justify-center shadow-sm">RS</div>
             <div class="min-w-0">
@@ -1450,6 +1474,7 @@
               <span class="text-xs text-slate-500 font-medium">Parent Testimonial</span>
             </div>
           </div>
+          <div class="mb-4 text-amber-500 tracking-wider" role="img" aria-label="5 out of 5 stars">★★★★★</div>
           <blockquote class="text-slate-700 text-sm leading-relaxed space-y-3">
               <p>We are so grateful for the time our child spent at Love N Learn . Although she has outgrown the daycare, we still look back on our experience with nothing but positive memories. The staff was always warm, caring, and professional, providing a nurturing environment where our child could learn and grow.</p>
             <details class="mt-3">
@@ -1461,7 +1486,7 @@
           </blockquote>
         </article>
 
-        <article data-tags="all teachers infant-toddler meals" class="review-card bg-white rounded-3xl p-6 sm:p-7 shadow-soft border border-rose-100 flex flex-col">
+        <article hidden aria-roledescription="slide" data-tags="all teachers infant-toddler meals" class="review-card bg-white rounded-3xl p-6 sm:p-7 shadow-soft border border-rose-100 flex flex-col">
           <div class="flex items-center gap-3 mb-4">
             <div aria-hidden="true" class="w-12 h-12 shrink-0 rounded-2xl bg-gradient-to-br from-emerald-500 to-teal-600 text-white font-display font-bold text-lg flex items-center justify-center shadow-sm">TN</div>
             <div class="min-w-0">
@@ -1469,6 +1494,7 @@
               <span class="text-xs text-slate-500 font-medium">Parent Testimonial</span>
             </div>
           </div>
+          <div class="mb-4 text-amber-500 tracking-wider" role="img" aria-label="5 out of 5 stars">★★★★★</div>
           <blockquote class="text-slate-700 text-sm leading-relaxed space-y-3">
               <p>This is a very good daycare. Clean, reliable and full of love.</p>
               <p>It is a smaller daycare but they utilize the space very smartly. Being a smaller daycare, there is a family atmosphere. The plaza is not busy during pick up and drop off, spots are very wide.</p>
@@ -1483,7 +1509,7 @@
           </blockquote>
         </article>
 
-        <article data-tags="all teachers infant-toddler meals" class="review-card bg-white rounded-3xl p-6 sm:p-7 shadow-soft border border-rose-100 flex flex-col">
+        <article hidden aria-roledescription="slide" data-tags="all teachers infant-toddler meals" class="review-card bg-white rounded-3xl p-6 sm:p-7 shadow-soft border border-rose-100 flex flex-col">
           <div class="flex items-center gap-3 mb-4">
             <div aria-hidden="true" class="w-12 h-12 shrink-0 rounded-2xl bg-gradient-to-br from-sky-500 to-indigo-500 text-white font-display font-bold text-lg flex items-center justify-center shadow-sm">IL</div>
             <div class="min-w-0">
@@ -1491,6 +1517,7 @@
               <span class="text-xs text-slate-500 font-medium">Parent Testimonial</span>
             </div>
           </div>
+          <div class="mb-4 text-amber-500 tracking-wider" role="img" aria-label="5 out of 5 stars">★★★★★</div>
           <blockquote class="text-slate-700 text-sm leading-relaxed space-y-3">
               <p>My daughter is attending this daycare for abour four months, and our family is so happy about it so far. Teachers are reliable, professional, and most importantly so caring for babies. There is some sorts of the fun activities almost everyday.</p>
             <details class="mt-3">
@@ -1502,7 +1529,7 @@
           </blockquote>
         </article>
 
-        <article data-tags="all teachers meals" class="review-card bg-white rounded-3xl p-6 sm:p-7 shadow-soft border border-rose-100 flex flex-col">
+        <article hidden aria-roledescription="slide" data-tags="all teachers meals" class="review-card bg-white rounded-3xl p-6 sm:p-7 shadow-soft border border-rose-100 flex flex-col">
           <div class="flex items-center gap-3 mb-4">
             <div aria-hidden="true" class="w-12 h-12 shrink-0 rounded-2xl bg-gradient-to-br from-rose-500 to-pink-500 text-white font-display font-bold text-lg flex items-center justify-center shadow-sm">PK</div>
             <div class="min-w-0">
@@ -1510,6 +1537,7 @@
               <span class="text-xs text-slate-500 font-medium">Parent Testimonial</span>
             </div>
           </div>
+          <div class="mb-4 text-amber-500 tracking-wider" role="img" aria-label="5 out of 5 stars">★★★★★</div>
           <blockquote class="text-slate-700 text-sm leading-relaxed space-y-3">
               <p>Love n Learn is such a caring, positive, warm and loving environment for our child. We are so grateful for finding this daycare when we moved to the neighborhood. The teachers are so hard working, genuine and kind.</p>
             <details class="mt-3">
@@ -1521,7 +1549,7 @@
           </blockquote>
         </article>
 
-        <article data-tags="all teachers meals" class="review-card bg-white rounded-3xl p-6 sm:p-7 shadow-soft border border-rose-100 flex flex-col">
+        <article hidden aria-roledescription="slide" data-tags="all teachers meals" class="review-card bg-white rounded-3xl p-6 sm:p-7 shadow-soft border border-rose-100 flex flex-col">
           <div class="flex items-center gap-3 mb-4">
             <div aria-hidden="true" class="w-12 h-12 shrink-0 rounded-2xl bg-gradient-to-br from-amber-500 to-orange-500 text-white font-display font-bold text-lg flex items-center justify-center shadow-sm">ML</div>
             <div class="min-w-0">
@@ -1529,6 +1557,7 @@
               <span class="text-xs text-slate-500 font-medium">Parent Testimonial</span>
             </div>
           </div>
+          <div class="mb-4 text-amber-500 tracking-wider" role="img" aria-label="5 out of 5 stars">★★★★★</div>
           <blockquote class="text-slate-700 text-sm leading-relaxed space-y-3">
               <p>We love this daycare... All the teachers are so professional and caring... And supervisor Ms. Victoria is very organized, responsive and accommodating. They keep a detailed daily log and take pictures so I am on top of what my daughter did at school.</p>
             <details class="mt-3">
@@ -1540,7 +1569,7 @@
           </blockquote>
         </article>
 
-        <article data-tags="all teachers infant-toddler preschool" class="review-card bg-white rounded-3xl p-6 sm:p-7 shadow-soft border border-rose-100 flex flex-col">
+        <article hidden aria-roledescription="slide" data-tags="all teachers infant-toddler preschool" class="review-card bg-white rounded-3xl p-6 sm:p-7 shadow-soft border border-rose-100 flex flex-col">
           <div class="flex items-center gap-3 mb-4">
             <div aria-hidden="true" class="w-12 h-12 shrink-0 rounded-2xl bg-gradient-to-br from-emerald-500 to-teal-600 text-white font-display font-bold text-lg flex items-center justify-center shadow-sm">KC</div>
             <div class="min-w-0">
@@ -1548,6 +1577,7 @@
               <span class="text-xs text-slate-500 font-medium">Parent Testimonial</span>
             </div>
           </div>
+          <div class="mb-4 text-amber-500 tracking-wider" role="img" aria-label="5 out of 5 stars">★★★★★</div>
           <blockquote class="text-slate-700 text-sm leading-relaxed space-y-3">
               <p>All we can say how amazing of this Childcare. 2 of my sons are being there since 11months old and 3 years old. All the Teachers and staffs are super Nice and Care for every single child. Especially for an Infant Program, all staffs are showing lots of love and caring, they will teaching and entertain them all the time.</p>
             <details class="mt-3">
@@ -1559,7 +1589,7 @@
           </blockquote>
         </article>
 
-        <article data-tags="all teachers infant-toddler meals" class="review-card bg-white rounded-3xl p-6 sm:p-7 shadow-soft border border-rose-100 flex flex-col">
+        <article hidden aria-roledescription="slide" data-tags="all teachers infant-toddler meals" class="review-card bg-white rounded-3xl p-6 sm:p-7 shadow-soft border border-rose-100 flex flex-col">
           <div class="flex items-center gap-3 mb-4">
             <div aria-hidden="true" class="w-12 h-12 shrink-0 rounded-2xl bg-gradient-to-br from-sky-500 to-indigo-500 text-white font-display font-bold text-lg flex items-center justify-center shadow-sm">SI</div>
             <div class="min-w-0">
@@ -1567,6 +1597,7 @@
               <span class="text-xs text-slate-500 font-medium">Parent Testimonial</span>
             </div>
           </div>
+          <div class="mb-4 text-amber-500 tracking-wider" role="img" aria-label="5 out of 5 stars">★★★★★</div>
           <blockquote class="text-slate-700 text-sm leading-relaxed space-y-3">
               <p>I can&#x27;t say enough good things about this daycare. The staffs are absolutely amazing, especially Ms. Victoria, the supervisor. She is approachable, organized, and always welcomes our family. From the moment my daughter started from the infant class, she received lots and lots of love and care from Ms.</p>
             <details class="mt-3">
@@ -1578,7 +1609,7 @@
           </blockquote>
         </article>
 
-        <article data-tags="all teachers meals" class="review-card bg-white rounded-3xl p-6 sm:p-7 shadow-soft border border-rose-100 flex flex-col">
+        <article hidden aria-roledescription="slide" data-tags="all teachers meals" class="review-card bg-white rounded-3xl p-6 sm:p-7 shadow-soft border border-rose-100 flex flex-col">
           <div class="flex items-center gap-3 mb-4">
             <div aria-hidden="true" class="w-12 h-12 shrink-0 rounded-2xl bg-gradient-to-br from-rose-500 to-pink-500 text-white font-display font-bold text-lg flex items-center justify-center shadow-sm">AT</div>
             <div class="min-w-0">
@@ -1586,13 +1617,14 @@
               <span class="text-xs text-slate-500 font-medium">Parent Testimonial</span>
             </div>
           </div>
+          <div class="mb-4 text-amber-500 tracking-wider" role="img" aria-label="5 out of 5 stars">★★★★★</div>
           <blockquote class="text-slate-700 text-sm leading-relaxed space-y-3">
               <p>Great price
 Amazing facility. Very friendly staff. Lots of fun activities for the kids and high quality education. Highly recommend</p>
           </blockquote>
         </article>
 
-        <article data-tags="all teachers meals" class="review-card bg-white rounded-3xl p-6 sm:p-7 shadow-soft border border-rose-100 flex flex-col">
+        <article hidden aria-roledescription="slide" data-tags="all teachers meals" class="review-card bg-white rounded-3xl p-6 sm:p-7 shadow-soft border border-rose-100 flex flex-col">
           <div class="flex items-center gap-3 mb-4">
             <div aria-hidden="true" class="w-12 h-12 shrink-0 rounded-2xl bg-gradient-to-br from-amber-500 to-orange-500 text-white font-display font-bold text-lg flex items-center justify-center shadow-sm">MC</div>
             <div class="min-w-0">
@@ -1600,6 +1632,7 @@ Amazing facility. Very friendly staff. Lots of fun activities for the kids and h
               <span class="text-xs text-slate-500 font-medium">Parent Testimonial</span>
             </div>
           </div>
+          <div class="mb-4 text-amber-500 tracking-wider" role="img" aria-label="5 out of 5 stars">★★★★★</div>
           <blockquote class="text-slate-700 text-sm leading-relaxed space-y-3">
               <p>It takes a big heart to shape little minds.</p>
               <p>The staff at the daycare are phenomenal, there’s no doubt that they’re all in the right line of work as they show a lot of love towards the children. My child has been enrolled in this daycare since the first day it opened and I couldn’t be happier.</p>
@@ -1612,7 +1645,7 @@ Amazing facility. Very friendly staff. Lots of fun activities for the kids and h
           </blockquote>
         </article>
 
-        <article data-tags="all teachers meals" class="review-card bg-white rounded-3xl p-6 sm:p-7 shadow-soft border border-rose-100 flex flex-col">
+        <article hidden aria-roledescription="slide" data-tags="all teachers meals" class="review-card bg-white rounded-3xl p-6 sm:p-7 shadow-soft border border-rose-100 flex flex-col">
           <div class="flex items-center gap-3 mb-4">
             <div aria-hidden="true" class="w-12 h-12 shrink-0 rounded-2xl bg-gradient-to-br from-emerald-500 to-teal-600 text-white font-display font-bold text-lg flex items-center justify-center shadow-sm">JY</div>
             <div class="min-w-0">
@@ -1620,6 +1653,7 @@ Amazing facility. Very friendly staff. Lots of fun activities for the kids and h
               <span class="text-xs text-slate-500 font-medium">Parent Testimonial</span>
             </div>
           </div>
+          <div class="mb-4 text-amber-500 tracking-wider" role="img" aria-label="5 out of 5 stars">★★★★★</div>
           <blockquote class="text-slate-700 text-sm leading-relaxed space-y-3">
               <p>My twins have been going to Love n Learn since Summer time. First I was very impressed with the cleanliness of the facility and how organized each classrooms are over my virtual tour. And when we actually went there, I was reassured because my kids’ teachers, Ms.</p>
             <details class="mt-3">
@@ -1632,7 +1666,7 @@ They also keep an online daily journal of what the kids ate, how much, whether t
           </blockquote>
         </article>
 
-        <article data-tags="all teachers infant-toddler" class="review-card bg-white rounded-3xl p-6 sm:p-7 shadow-soft border border-rose-100 flex flex-col">
+        <article hidden aria-roledescription="slide" data-tags="all teachers infant-toddler" class="review-card bg-white rounded-3xl p-6 sm:p-7 shadow-soft border border-rose-100 flex flex-col">
           <div class="flex items-center gap-3 mb-4">
             <div aria-hidden="true" class="w-12 h-12 shrink-0 rounded-2xl bg-gradient-to-br from-sky-500 to-indigo-500 text-white font-display font-bold text-lg flex items-center justify-center shadow-sm">EL</div>
             <div class="min-w-0">
@@ -1640,6 +1674,7 @@ They also keep an online daily journal of what the kids ate, how much, whether t
               <span class="text-xs text-slate-500 font-medium">Parent Testimonial</span>
             </div>
           </div>
+          <div class="mb-4 text-amber-500 tracking-wider" role="img" aria-label="5 out of 5 stars">★★★★★</div>
           <blockquote class="text-slate-700 text-sm leading-relaxed space-y-3">
               <p>We&#x27;ve been sending our son here since he was 15 months old. Victoria was very helpful giving us an initial tour, setting us up, walking us through all the details.</p>
               <p>All the teachers we have worked with are incredibly professional and caring. The teachers keep a good log of how our son is doing, what activities they did, how much he&#x27;s eaten, etc. We recently just transitioned from infant to toddler class, and all the teachers had been great with the transition.</p>
@@ -1647,7 +1682,7 @@ They also keep an online daily journal of what the kids ate, how much, whether t
           </blockquote>
         </article>
 
-        <article data-tags="all teachers infant-toddler" class="review-card bg-white rounded-3xl p-6 sm:p-7 shadow-soft border border-rose-100 flex flex-col">
+        <article hidden aria-roledescription="slide" data-tags="all teachers infant-toddler" class="review-card bg-white rounded-3xl p-6 sm:p-7 shadow-soft border border-rose-100 flex flex-col">
           <div class="flex items-center gap-3 mb-4">
             <div aria-hidden="true" class="w-12 h-12 shrink-0 rounded-2xl bg-gradient-to-br from-rose-500 to-pink-500 text-white font-display font-bold text-lg flex items-center justify-center shadow-sm">SM</div>
             <div class="min-w-0">
@@ -1655,6 +1690,7 @@ They also keep an online daily journal of what the kids ate, how much, whether t
               <span class="text-xs text-slate-500 font-medium">Parent Testimonial</span>
             </div>
           </div>
+          <div class="mb-4 text-amber-500 tracking-wider" role="img" aria-label="5 out of 5 stars">★★★★★</div>
           <blockquote class="text-slate-700 text-sm leading-relaxed space-y-3">
               <p>This little hidden gem is phenomenal! My son has been registered here since January and absolutely loves it - Don&#x27;t look anywhere else :)</p>
               <p>A bit of backstory... We were originally on a waitlist/ registered with another centre (back in 2019) and were extremely disappointed with the level of care after only attending orientation so we quickly unenrolled.</p>
@@ -1668,7 +1704,7 @@ They also keep an online daily journal of what the kids ate, how much, whether t
           </blockquote>
         </article>
 
-        <article data-tags="all teachers infant-toddler meals" class="review-card bg-white rounded-3xl p-6 sm:p-7 shadow-soft border border-rose-100 flex flex-col">
+        <article hidden aria-roledescription="slide" data-tags="all teachers infant-toddler meals" class="review-card bg-white rounded-3xl p-6 sm:p-7 shadow-soft border border-rose-100 flex flex-col">
           <div class="flex items-center gap-3 mb-4">
             <div aria-hidden="true" class="w-12 h-12 shrink-0 rounded-2xl bg-gradient-to-br from-amber-500 to-orange-500 text-white font-display font-bold text-lg flex items-center justify-center shadow-sm">JL</div>
             <div class="min-w-0">
@@ -1676,6 +1712,7 @@ They also keep an online daily journal of what the kids ate, how much, whether t
               <span class="text-xs text-slate-500 font-medium">Parent Testimonial</span>
             </div>
           </div>
+          <div class="mb-4 text-amber-500 tracking-wider" role="img" aria-label="5 out of 5 stars">★★★★★</div>
           <blockquote class="text-slate-700 text-sm leading-relaxed space-y-3">
               <p>I visited quite a few daycares in my neighbourhood. I chose this daycare infant program for my daughter given the following reasons 1) classroom clean and bright, all furniture and toys are in great condition 2) meals and snacks are made inhouse and served fresh and nutritious 3) teachers respect each individual child time schedule, make them feel like home.</p>
             <details class="mt-3">
@@ -1687,6 +1724,12 @@ They also keep an online daily journal of what the kids ate, how much, whether t
           </blockquote>
         </article>
       </div>
+
+      <div class="mt-6 flex items-center justify-end gap-3" aria-label="Testimonial navigation">
+        <button type="button" id="testimonials-prev" onclick="changeTestimonialPage(-1)" aria-label="Previous testimonials" aria-controls="reviews-grid" class="px-5 py-3 rounded-xl border border-rose-200 bg-white text-slate-800 font-bold hover:bg-rose-50 focus-visible:outline focus-visible:outline-2 focus-visible:outline-rose-500 disabled:opacity-40 disabled:cursor-not-allowed">← Previous</button>
+        <button type="button" id="testimonials-next" onclick="changeTestimonialPage(1)" aria-label="Next testimonials" aria-controls="reviews-grid" class="px-5 py-3 rounded-xl bg-slate-900 text-white font-bold hover:bg-slate-800 focus-visible:outline focus-visible:outline-2 focus-visible:outline-rose-500 disabled:opacity-40 disabled:cursor-not-allowed">Next →</button>
+      </div>
+      <p id="testimonials-status" class="sr-only" aria-live="polite" aria-atomic="true"></p>
 
       <!-- Direct Google Maps Reviews CTA Bar -->
       <div class="mt-10 bg-white rounded-2xl p-5 sm:p-6 border border-amber-200/80 shadow-sm flex flex-col sm:flex-row items-center justify-between gap-4">
@@ -3213,28 +3256,83 @@ They also keep an online daily journal of what the kids ate, how much, whether t
       renderMenu();
     }
 
-    // 5. Parent Reviews Filter
-    function filterReviews(tag) {
-      const cards = document.querySelectorAll('.review-card');
-      cards.forEach(card => {
-        const cardTags = card.getAttribute('data-tags').split(' ');
-        if (cardTags.includes(tag)) {
-          card.classList.remove('hidden');
-        } else {
-          card.classList.add('hidden');
-        }
-      });
+    // 5. Testimonials: responsive pages, category filters, keyboard and touch navigation.
+    let testimonialTag = 'all';
+    let testimonialPage = 0;
+    let testimonialPageSize = getTestimonialPageSize();
 
+    function getTestimonialPageSize() {
+      return window.innerWidth >= 1024 ? 3 : window.innerWidth >= 768 ? 2 : 1;
+    }
+
+    function renderTestimonials() {
+      const cards = Array.from(document.querySelectorAll('#reviews-grid .review-card'));
+      const matching = cards.filter(card => card.dataset.tags.split(' ').includes(testimonialTag));
+      const pages = Math.ceil(matching.length / testimonialPageSize);
+      testimonialPage = pages ? ((testimonialPage % pages) + pages) % pages : 0;
+      const visible = matching.slice(testimonialPage * testimonialPageSize, (testimonialPage + 1) * testimonialPageSize);
+      cards.forEach(card => {
+        card.hidden = !visible.includes(card);
+        if (card.hidden) card.querySelectorAll('details[open]').forEach(detail => detail.open = false);
+      });
+      ['prev', 'next'].forEach(direction => {
+        document.getElementById('testimonials-' + direction).disabled = pages <= 1;
+      });
+      document.getElementById('testimonials-status').textContent = visible.length
+        ? 'Testimonials from ' + visible.map(card => card.querySelector('h3').textContent).join(', ')
+        : 'No testimonials in this category.';
+    }
+
+    function changeTestimonialPage(direction) {
+      testimonialPage += direction;
+      renderTestimonials();
+    }
+
+    function filterReviews(tag) {
+      testimonialTag = tag;
+      testimonialPage = 0;
+      renderTestimonials();
       ['all', 'teachers', 'infant-toddler', 'preschool', 'meals'].forEach(t => {
         const btn = document.getElementById('rev-filter-' + t);
         if (!btn) return;
-        if (t === tag) {
-          btn.className = 'rev-filter-btn px-3.5 py-2 rounded-xl text-xs font-bold bg-slate-900 text-white transition-all';
-        } else {
-          btn.className = 'rev-filter-btn px-3.5 py-2 rounded-xl text-xs font-bold bg-white text-slate-700 border border-slate-200 hover:bg-rose-50 transition-all';
-        }
+        btn.setAttribute('aria-pressed', String(t === tag));
+        btn.className = t === tag
+          ? 'rev-filter-btn px-3.5 py-2 rounded-xl text-xs font-bold bg-slate-900 text-white transition-all'
+          : 'rev-filter-btn px-3.5 py-2 rounded-xl text-xs font-bold bg-white text-slate-700 border border-slate-200 hover:bg-rose-50 transition-all';
       });
     }
+
+    document.addEventListener('DOMContentLoaded', () => {
+      filterReviews('all');
+      const viewport = document.getElementById('reviews-grid');
+      viewport.addEventListener('keydown', event => {
+        if (event.target !== viewport) return;
+        if (event.key === 'ArrowLeft' || event.key === 'ArrowRight') {
+          event.preventDefault();
+          changeTestimonialPage(event.key === 'ArrowLeft' ? -1 : 1);
+        }
+      });
+      let touchStart = null;
+      viewport.addEventListener('touchstart', event => {
+        touchStart = event.touches.length === 1
+          ? { x: event.touches[0].clientX, y: event.touches[0].clientY } : null;
+      }, { passive: true });
+      viewport.addEventListener('touchend', event => {
+        if (!touchStart) return;
+        const dx = event.changedTouches[0].clientX - touchStart.x;
+        const dy = event.changedTouches[0].clientY - touchStart.y;
+        touchStart = null;
+        if (Math.abs(dx) > 50 && Math.abs(dx) > Math.abs(dy)) changeTestimonialPage(dx < 0 ? 1 : -1);
+      }, { passive: true });
+      viewport.addEventListener('touchcancel', () => { touchStart = null; }, { passive: true });
+      window.addEventListener('resize', () => {
+        const size = getTestimonialPageSize();
+        if (size === testimonialPageSize) return;
+        testimonialPageSize = size;
+        testimonialPage = 0;
+        renderTestimonials();
+      });
+    });
 
     // 6. General Question Form Submission
     function handleFormSubmit(e) {
