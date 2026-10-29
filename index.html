@@ -76,6 +76,24 @@
       overflow-x: hidden;
     }
     .program-card { scroll-margin-top: 7rem; }
+    #handbook-view-pdf { min-height: 0; }
+    #handbook-pdf-frame { flex: 1; min-height: 0; }
+    #handbook-modal.pdf-expanded .handbook-modal-footer { display: none; }
+    @media (min-width: 1024px) {
+      #handbook-modal.pdf-expanded > div { width: 98vw; max-width: none; height: 96dvh; max-height: 96dvh; }
+    }
+    @media (max-width: 1023px) {
+      #handbook-view-reader { position: relative; }
+      #handbook-toc-backdrop { display: none; position: absolute; inset: 0; z-index: 10; background: rgba(15, 23, 42, .55); }
+      #handbook-toc-panel { position: absolute; inset: 0 auto 0 0; z-index: 11; width: min(85vw, 340px); max-height: none; visibility: hidden; transform: translateX(-105%); transition: transform .2s ease, visibility .2s; box-shadow: 8px 0 24px rgba(15, 23, 42, .2); }
+      #handbook-view-reader.toc-open #handbook-toc-backdrop { display: block; }
+      #handbook-view-reader.toc-open #handbook-toc-panel { visibility: visible; transform: translateX(0); }
+      #handbook-toc-toggle { display: block; position: absolute; left: 16px; bottom: 16px; z-index: 2; padding: 12px 18px; border-radius: 999px; background: #0f172a; color: white; font-weight: 700; box-shadow: 0 4px 18px rgba(15, 23, 42, .3); }
+      #handbook-reader-content { width: 100%; padding-bottom: 88px; }
+    }
+    @media (min-width: 1024px) {
+      #handbook-toc-backdrop, #handbook-toc-toggle, #handbook-toc-panel-header { display: none; }
+    }
     @keyframes floatSlow {
       0%, 100% { transform: translateY(0px) rotate(0deg); }
       50% { transform: translateY(-8px) rotate(2deg); }
@@ -2574,9 +2592,14 @@ They also keep an online daily journal of what the kids ate, how much, whether t
 
       <!-- VIEW 1: INTERACTIVE CHAPTER-BY-CHAPTER READER WITH SEARCH -->
       <div id="handbook-view-reader" class="flex-1 min-h-0 flex flex-col lg:flex-row overflow-hidden">
+        <button type="button" id="handbook-toc-backdrop" aria-label="Close table of contents" onclick="closeHandbookToc()"></button>
         
         <!-- Left Sidebar: Search & Table of Contents -->
-        <div class="w-full lg:w-72 bg-slate-50 border-b lg:border-b-0 lg:border-r border-slate-200 p-3 sm:p-4 flex flex-col shrink-0 max-h-32 sm:max-h-56 lg:max-h-none overflow-y-auto">
+        <div id="handbook-toc-panel" class="w-full lg:w-72 bg-slate-50 border-b lg:border-b-0 lg:border-r border-slate-200 p-4 flex flex-col shrink-0 overflow-y-auto">
+          <div id="handbook-toc-panel-header" class="flex items-center justify-between mb-3 font-bold text-slate-900">
+            <span>Table of Contents</span>
+            <button type="button" onclick="closeHandbookToc()" aria-label="Close table of contents" class="px-3 py-1.5 rounded-lg bg-white border border-slate-200">✕</button>
+          </div>
           <div class="mb-3">
             <label for="handbook-search" class="sr-only">Search Parent Handbook</label>
             <input
@@ -2599,6 +2622,7 @@ They also keep an online daily journal of what the kids ate, how much, whether t
         <div id="handbook-reader-content" class="flex-1 min-h-0 p-5 sm:p-8 overflow-y-auto bg-cream space-y-6">
           <!-- Populated dynamically by JS -->
         </div>
+        <button type="button" id="handbook-toc-toggle" aria-controls="handbook-toc-panel" aria-expanded="false" onclick="openHandbookToc()">☰ Contents</button>
       </div>
 
       <!-- VIEW 2: EMBEDDED PDF OBJECT / IFRAME VIEWER -->
@@ -2610,7 +2634,7 @@ They also keep an online daily journal of what the kids ate, how much, whether t
             <a href="Parent Handbook - Last Update.pdf" download="Love-n-Learn-Parent-Handbook.pdf" class="font-bold text-emerald-700 hover:underline">Download PDF File ↓</a>
           </div>
         </div>
-        <div class="flex-1 w-full h-[65vh] relative bg-slate-800">
+        <div id="handbook-pdf-frame" class="w-full relative bg-slate-800">
           <object data="Parent Handbook - Last Update.pdf" type="application/pdf" class="w-full h-full">
             <div class="p-8 text-center text-white max-w-lg mx-auto my-12 bg-slate-900 rounded-3xl border border-slate-700">
               <div class="text-4xl mb-3">📘</div>
@@ -2632,7 +2656,7 @@ They also keep an online daily journal of what the kids ate, how much, whether t
       </div>
 
       <!-- Modal Footer -->
-      <div class="hidden sm:flex bg-white border-t border-slate-200 px-5 py-3 flex-wrap items-center justify-between gap-3 text-xs text-slate-500 shrink-0">
+      <div class="handbook-modal-footer hidden sm:flex bg-white border-t border-slate-200 px-5 py-3 flex-wrap items-center justify-between gap-3 text-xs text-slate-500 shrink-0">
         <div>Love n' Learn Childcare Centre • 1 Mintleaf Gate, Unit 1, Markham, ON L3P 5X4 • (905) 201-4000</div>
         <div class="flex items-center gap-3">
           <a href="Parent Handbook - Last Update.pdf" download="Love-n-Learn-Parent-Handbook.pdf" class="font-bold text-rose-600 hover:underline">Download Official PDF</a>
@@ -3653,7 +3677,7 @@ They also keep an online daily journal of what the kids ate, how much, whether t
         return `
           <button
             type="button"
-            onclick="selectHandbookChapter('${ch.id}')"
+            onclick="selectHandbookChapter('${ch.id}'); closeHandbookToc()"
             class="w-full text-left px-3 py-2.5 rounded-xl text-xs transition-all flex items-start gap-2.5 ${
               isActive
                 ? 'bg-slate-900 text-white font-bold shadow-sm'
@@ -3714,6 +3738,18 @@ They also keep an online daily journal of what the kids ate, how much, whether t
       }
     }
 
+    function openHandbookToc() {
+      document.getElementById('handbook-view-reader').classList.add('toc-open');
+      document.getElementById('handbook-toc-toggle').setAttribute('aria-expanded', 'true');
+      document.getElementById('handbook-search').focus();
+    }
+
+    function closeHandbookToc(restoreFocus = true) {
+      document.getElementById('handbook-view-reader').classList.remove('toc-open');
+      document.getElementById('handbook-toc-toggle').setAttribute('aria-expanded', 'false');
+      if (restoreFocus) document.getElementById('handbook-toc-toggle').focus();
+    }
+
     function switchHandbookViewMode(mode) {
       const readerView = document.getElementById('handbook-view-reader');
       const pdfView = document.getElementById('handbook-view-pdf');
@@ -3721,11 +3757,14 @@ They also keep an online daily journal of what the kids ate, how much, whether t
       const btnPdf = document.getElementById('hb-mode-pdf');
 
       if (mode === 'pdf') {
+        closeHandbookToc(false);
+        document.getElementById('handbook-modal').classList.add('pdf-expanded');
         readerView.classList.add('hidden');
         pdfView.classList.remove('hidden');
         btnPdf.className = 'px-3 py-1.5 rounded-lg bg-amber-400 text-slate-950 transition-all';
         btnReader.className = 'px-3 py-1.5 rounded-lg text-slate-300 hover:text-white transition-all';
       } else {
+        document.getElementById('handbook-modal').classList.remove('pdf-expanded');
         pdfView.classList.add('hidden');
         readerView.classList.remove('hidden');
         btnReader.className = 'px-3 py-1.5 rounded-lg bg-amber-400 text-slate-950 transition-all';
@@ -3746,8 +3785,15 @@ They also keep an online daily journal of what the kids ate, how much, whether t
     }
 
     function closeHandbookModal() {
+      closeHandbookToc(false);
       document.getElementById('handbook-modal').classList.add('hidden');
     }
+
+    document.addEventListener('keydown', event => {
+      if (event.key === 'Escape' && document.getElementById('handbook-view-reader').classList.contains('toc-open')) {
+        closeHandbookToc();
+      }
+    });
 
     function printHandbookSummary() {
       openHandbookModal('reader');
