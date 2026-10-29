@@ -1794,7 +1794,7 @@ They also keep an online daily journal of what the kids ate, how much, whether t
               </button>
 
               <!-- Button 2: Direct PDF Download -->
-              <a href="Parent Handbook - Last Update.pdf" download="Love-n-Learn-Parent-Handbook.pdf" class="px-6 py-4 rounded-2xl font-display font-bold text-sm sm:text-base text-white bg-gradient-to-r from-rose-500 to-orange-500 hover:from-rose-600 hover:to-orange-600 shadow-lg hover:shadow-xl transition-all flex items-center justify-center gap-2.5">
+              <a href="Parent Handbook - Last Update.pdf" download="Love-n-Learn-Parent-Handbook.pdf" class="hidden md:flex px-6 py-4 rounded-2xl font-display font-bold text-sm sm:text-base text-white bg-gradient-to-r from-rose-500 to-orange-500 hover:from-rose-600 hover:to-orange-600 shadow-lg hover:shadow-xl transition-all items-center justify-center gap-2.5">
                 <span>⬇️</span>
                 <span>Download PDF Handbook</span>
               </a>
@@ -2216,14 +2216,14 @@ They also keep an online daily journal of what the kids ate, how much, whether t
                   <span class="text-xl">📘</span>
                   <div>
                     <div class="text-xs uppercase tracking-wider text-amber-300 font-bold">Parent Handbook</div>
-                    <div class="text-xs text-slate-200 mt-0.5">Read policies or download PDF</div>
+                    <div class="text-xs text-slate-200 mt-0.5"><span class="md:hidden">Read policies online</span><span class="hidden md:inline">Read policies or download PDF</span></div>
                   </div>
                 </div>
                 <div class="flex items-center gap-1.5 shrink-0">
                   <button type="button" onclick="openHandbookModal('reader')" class="px-2 sm:px-3 py-1.5 rounded-xl bg-amber-400 hover:bg-amber-300 text-slate-950 text-xs font-bold whitespace-nowrap transition-colors">
                     Read
                   </button>
-                  <a href="Parent Handbook - Last Update.pdf" download="Love-n-Learn-Parent-Handbook.pdf" class="px-2 sm:px-3 py-1.5 rounded-xl bg-white/10 hover:bg-white/20 text-white text-xs font-bold whitespace-nowrap transition-colors">
+                  <a href="Parent Handbook - Last Update.pdf" download="Love-n-Learn-Parent-Handbook.pdf" class="hidden md:inline-block px-2 sm:px-3 py-1.5 rounded-xl bg-white/10 hover:bg-white/20 text-white text-xs font-bold whitespace-nowrap transition-colors">
                     PDF ↓
                   </a>
                 </div>
@@ -2574,7 +2574,7 @@ They also keep an online daily journal of what the kids ate, how much, whether t
             </button>
           </div>
 
-          <a href="Parent Handbook - Last Update.pdf" download="Love-n-Learn-Parent-Handbook.pdf" class="px-3.5 py-2 rounded-xl bg-rose-500 hover:bg-rose-600 text-white font-bold text-xs flex items-center gap-1.5 transition-colors">
+          <a href="Parent Handbook - Last Update.pdf" download="Love-n-Learn-Parent-Handbook.pdf" class="hidden md:flex px-3.5 py-2 rounded-xl bg-rose-500 hover:bg-rose-600 text-white font-bold text-xs items-center gap-1.5 transition-colors">
             <span>⬇️</span>
             <span class="hidden sm:inline">Download PDF</span>
           </a>
@@ -2631,7 +2631,7 @@ They also keep an online daily journal of what the kids ate, how much, whether t
           <span>📄 Displaying <strong>Parent Handbook - Last Update.pdf</strong> (Updated April 20th, 2026)</span>
           <div class="flex items-center gap-3">
             <a href="Parent Handbook - Last Update.pdf" target="_blank" rel="noopener noreferrer" class="font-bold text-rose-600 hover:underline">Open PDF in Full Browser Tab ↗</a>
-            <a href="Parent Handbook - Last Update.pdf" download="Love-n-Learn-Parent-Handbook.pdf" class="font-bold text-emerald-700 hover:underline">Download PDF File ↓</a>
+            <a href="Parent Handbook - Last Update.pdf" download="Love-n-Learn-Parent-Handbook.pdf" class="hidden md:inline font-bold text-emerald-700 hover:underline">Download PDF File ↓</a>
           </div>
         </div>
         <div id="handbook-pdf-frame" class="w-full relative bg-slate-800">
@@ -2646,7 +2646,7 @@ They also keep an online daily journal of what the kids ate, how much, whether t
                 <button type="button" onclick="switchHandbookViewMode('reader')" class="px-4 py-2.5 rounded-xl bg-amber-400 text-slate-950 font-bold text-xs">
                   📖 Switch to Interactive Reader
                 </button>
-                <a href="Parent Handbook - Last Update.pdf" download="Love-n-Learn-Parent-Handbook.pdf" class="px-4 py-2.5 rounded-xl bg-rose-500 text-white font-bold text-xs">
+                <a href="Parent Handbook - Last Update.pdf" download="Love-n-Learn-Parent-Handbook.pdf" class="hidden md:inline-block px-4 py-2.5 rounded-xl bg-rose-500 text-white font-bold text-xs">
                   ⬇️ Download PDF
                 </a>
               </div>
@@ -2656,7 +2656,7 @@ They also keep an online daily journal of what the kids ate, how much, whether t
       </div>
 
       <!-- Modal Footer -->
-      <div class="handbook-modal-footer hidden sm:flex bg-white border-t border-slate-200 px-5 py-3 flex-wrap items-center justify-between gap-3 text-xs text-slate-500 shrink-0">
+      <div class="handbook-modal-footer hidden md:flex bg-white border-t border-slate-200 px-5 py-3 flex-wrap items-center justify-between gap-3 text-xs text-slate-500 shrink-0">
         <div>Love n' Learn Childcare Centre • 1 Mintleaf Gate, Unit 1, Markham, ON L3P 5X4 • (905) 201-4000</div>
         <div class="flex items-center gap-3">
           <a href="Parent Handbook - Last Update.pdf" download="Love-n-Learn-Parent-Handbook.pdf" class="font-bold text-rose-600 hover:underline">Download Official PDF</a>
