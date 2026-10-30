@@ -560,7 +560,7 @@
               👩‍🏫
             </div>
             <div>
-              <div class="font-display font-extrabold text-xl sm:text-2xl text-slate-900">17 Qualified Educators</div>
+              <div class="font-display font-extrabold text-xl sm:text-2xl text-slate-900">Qualified Educators</div>
               <p class="text-xs sm:text-sm text-slate-500 font-medium">Registered ECEs &amp; caring teachers dedicated to early learning</p>
             </div>
           </div>
@@ -809,10 +809,10 @@
             <div class="w-14 h-14 rounded-2xl bg-purple-100 text-purple-700 flex items-center justify-center text-2xl mb-5">
               👩‍🏫
             </div>
-            <span class="text-xs font-bold uppercase tracking-wider text-purple-600">17 Dedicated Educators &amp; CWELCC</span>
+            <span class="text-xs font-bold uppercase tracking-wider text-purple-600">Dedicated Educators &amp; CWELCC</span>
             <h3 class="mt-1 font-display font-extrabold text-xl text-slate-900">Qualified &amp; Loving Educators</h3>
             <p class="mt-3 text-slate-600 text-sm leading-relaxed">
-              Our <strong>17 qualified educators and Registered ECEs</strong> care for every child as their own. As a proud <strong>CWELCC participating centre</strong> accepting York Region subsidies, we make exceptional licensed care affordable.
+              Our <strong>qualified educators and Registered ECEs</strong> care for every child as their own. As a proud <strong>CWELCC participating centre</strong> accepting York Region subsidies, we make exceptional licensed care affordable.
             </p>
           </div>
           <div class="mt-5 pt-4 border-t border-slate-100 flex items-center justify-between text-xs font-bold text-slate-500">
@@ -3578,7 +3578,7 @@ They also keep an online daily journal of what the kids ate, how much, whether t
                 <p>• <strong>Indoor Temperature:</strong> Maintained at a minimum of 20°C (68°F).</p>
                 <p>• <strong>Winter Outdoor Play:</strong> Assessed below -10°C for Infants and below -12°C for Toddlers/Preschoolers.</p>
                 <p>• <strong>Summer &amp; Air Quality:</strong> Monitored above +25°C (Infants) and +30°C (Toddlers/Preschool) or when Air Quality Index reaches 50.</p>
-                <p>• <strong>Sunscreen:</strong> Parents provide labelled SPF 30+ sunscreen/lip balm. Smoking/vaping is strictly prohibited within 9 meters of the centre.</p>
+                <p>• <strong>Sunscreen:</strong> Parents provide labelled SPF 30+ sunscreen/lip balm.</p>
               </div>
               <div class="p-4 rounded-xl bg-emerald-50 border border-emerald-100 space-y-1.5">
                 <div class="font-bold text-emerald-950 text-sm">🍲 Nutrition &amp; Anaphylactic Policy (p. 24–27)</div>
@@ -3587,6 +3587,9 @@ They also keep an online daily journal of what the kids ate, how much, whether t
                 <p>• <strong>Approved Home Food Rules:</strong> Any approved dietary food from home must be free of nuts, eggs, pork, shellfish, and seeds, and clearly labelled with the child's full name, arrival date, and ingredients.</p>
                 <p>• <strong>Individualized Anaphylaxis Plans:</strong> Posted in every classroom and kitchen with unlocked emergency EpiPens and annual staff training.</p>
               </div>
+            </div>
+            <div class="p-4 rounded-xl bg-slate-50 border border-slate-200 text-xs text-slate-700">
+              <strong class="text-slate-900">Smoke- and Vape-Free Premises:</strong> Smoking and vaping are strictly prohibited within 9 metres of the centre.
             </div>
           </div>
         `
@@ -3807,6 +3810,11 @@ They also keep an online daily journal of what the kids ate, how much, whether t
       closeHandbookToc(false);
       document.getElementById('handbook-modal').classList.add('hidden');
     }
+
+    const handbookModal = document.getElementById('handbook-modal');
+    handbookModal.addEventListener('click', event => {
+      if (event.target === handbookModal) closeHandbookModal();
+    });
 
     document.addEventListener('keydown', event => {
       if (event.key === 'Escape' && document.getElementById('handbook-view-reader').classList.contains('toc-open')) {
