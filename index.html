@@ -1895,7 +1895,7 @@ They also keep an online daily journal of what the kids ate, how much, whether t
                 <button type="button" onclick="openHandbookModal('pdf')" class="text-xs font-bold text-sky-700 hover:text-sky-900 flex items-center gap-1">
                   <span>📄</span> Preview Embedded PDF
                 </button>
-                <button type="button" onclick="printHandbookSummary()" class="text-xs font-bold text-slate-600 hover:text-slate-900 flex items-center gap-1">
+                <button type="button" onclick="printHandbookSummary()" class="hidden md:flex text-xs font-bold text-slate-600 hover:text-slate-900 items-center gap-1">
                   <span>🖨️</span> Print / Save Copy
                 </button>
               </div>
@@ -2053,7 +2053,7 @@ They also keep an online daily journal of what the kids ate, how much, whether t
               SEND US A GENERAL QUESTION
             </h3>
             <p class="text-xs sm:text-sm text-slate-600 mt-1.5 mb-6">
-              Have a question about our daycare, CWELCC Program, or employment? Fill this in to prepare an email, then press Send in your email app. IF You Want a TOUR or register in Waiting List, Please click on Join Waiting List button
+              Have a question about our daycare, CWELCC program, or employment? Fill this in to prepare an email, then press Send in your email app. To book a tour or join the waiting list, please click the Join the Waiting List button.
             </p>
 
             <!-- General Inquiry Form -->
@@ -2211,7 +2211,7 @@ They also keep an online daily journal of what the kids ate, how much, whether t
               </div>
 
               <!-- Quick Parent Handbook Download Box inside Contact Card -->
-                <div class="flex flex-col items-start sm:flex-row sm:items-center sm:justify-between gap-2 bg-amber-400/10 p-3.5 rounded-2xl border border-amber-400/30">
+                <div class="flex items-center justify-between gap-2 bg-amber-400/10 p-3.5 rounded-2xl border border-amber-400/30">
                 <div class="flex items-center gap-2 min-w-0">
                   <span class="text-xl">📘</span>
                   <div>
@@ -2564,13 +2564,13 @@ They also keep an online daily journal of what the kids ate, how much, whether t
         </div>
 
         <!-- Mode Switcher + Download + Close Buttons -->
-        <div class="flex flex-wrap items-center gap-2">
-          <div class="inline-flex rounded-xl bg-slate-800 p-1 text-xs font-bold">
-            <button type="button" id="hb-mode-reader" onclick="switchHandbookViewMode('reader')" class="px-3 py-1.5 rounded-lg bg-amber-400 text-slate-950 transition-all">
-              📖 Interactive Reader
+        <div class="flex flex-nowrap md:flex-wrap items-center justify-between md:justify-start gap-2 w-full md:w-auto">
+          <div class="inline-flex flex-1 min-w-0 md:flex-none rounded-xl bg-slate-800 p-1 text-xs font-bold">
+            <button type="button" id="hb-mode-reader" onclick="switchHandbookViewMode('reader')" class="flex-1 md:flex-none whitespace-nowrap px-1.5 sm:px-3 py-1.5 text-[10px] sm:text-xs rounded-lg bg-amber-400 text-slate-950 transition-all">
+              <span class="hidden sm:inline">📖 </span>Interactive Reader
             </button>
-            <button type="button" id="hb-mode-pdf" onclick="switchHandbookViewMode('pdf')" class="px-3 py-1.5 rounded-lg text-slate-300 hover:text-white transition-all">
-              📄 Embedded PDF View
+            <button type="button" id="hb-mode-pdf" onclick="switchHandbookViewMode('pdf')" class="flex-1 md:flex-none whitespace-nowrap px-1.5 sm:px-3 py-1.5 text-[10px] sm:text-xs rounded-lg text-slate-300 hover:text-white transition-all">
+              <span class="hidden sm:inline">📄 </span><span class="sm:hidden">Embedded PDF</span><span class="hidden sm:inline">Embedded PDF View</span>
             </button>
           </div>
 
@@ -2579,12 +2579,12 @@ They also keep an online daily journal of what the kids ate, how much, whether t
             <span class="hidden sm:inline">Download PDF</span>
           </a>
 
-          <button type="button" onclick="printHandbookSummary()" class="px-3 py-2 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-200 font-bold text-xs flex items-center gap-1 transition-colors" title="Print Handbook">
+          <button type="button" onclick="printHandbookSummary()" class="hidden md:flex px-3 py-2 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-200 font-bold text-xs items-center gap-1 transition-colors" title="Print Handbook">
             <span>🖨️</span>
             <span class="hidden md:inline">Print</span>
           </button>
 
-          <button type="button" onclick="closeHandbookModal()" class="p-2 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-300 hover:text-white font-bold text-sm">
+          <button type="button" onclick="closeHandbookModal()" aria-label="Close handbook" class="shrink-0 p-2 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-300 hover:text-white font-bold text-sm">
             ✕
           </button>
         </div>
@@ -3470,8 +3470,8 @@ They also keep an online daily journal of what the kids ate, how much, whether t
             </p>
 
             <!-- CWELCC Fee Table from Page 15-16 -->
-            <div class="overflow-x-auto rounded-2xl border border-slate-200">
-              <table class="w-full text-left border-collapse text-xs">
+            <div id="fee-schedule-scroll" class="overflow-x-auto rounded-2xl border border-slate-200">
+              <table class="w-full min-w-[760px] text-left border-collapse text-xs">
                 <thead>
                   <tr class="bg-slate-900 text-white">
                     <th class="p-3 font-bold">Program</th>
@@ -3509,6 +3509,10 @@ They also keep an online daily journal of what the kids ate, how much, whether t
                   </tr>
                 </tbody>
               </table>
+            </div>
+            <div class="md:hidden">
+              <label for="fee-schedule-slider" class="block text-xs font-semibold text-slate-600 mb-1">Slide to view the full fee schedule ↔</label>
+              <input id="fee-schedule-slider" type="range" min="0" max="100" value="0" aria-label="Scroll fee schedule horizontally" class="w-full accent-rose-600">
             </div>
 
             <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 text-xs">
@@ -3723,6 +3727,17 @@ They also keep an online daily journal of what the kids ate, how much, whether t
         </div>
       `;
       contentEl.scrollTop = 0;
+      const feeScroller = contentEl.querySelector('#fee-schedule-scroll');
+      const feeSlider = contentEl.querySelector('#fee-schedule-slider');
+      if (feeScroller && feeSlider) {
+        const syncSlider = () => {
+          feeSlider.max = String(Math.max(0, feeScroller.scrollWidth - feeScroller.clientWidth));
+          feeSlider.value = String(feeScroller.scrollLeft);
+        };
+        feeSlider.addEventListener('input', () => { feeScroller.scrollLeft = Number(feeSlider.value); });
+        feeScroller.addEventListener('scroll', syncSlider, { passive: true });
+        requestAnimationFrame(syncSlider);
+      }
     }
 
     function filterHandbookSections(query) {
@@ -3761,14 +3776,18 @@ They also keep an online daily journal of what the kids ate, how much, whether t
         document.getElementById('handbook-modal').classList.add('pdf-expanded');
         readerView.classList.add('hidden');
         pdfView.classList.remove('hidden');
-        btnPdf.className = 'px-3 py-1.5 rounded-lg bg-amber-400 text-slate-950 transition-all';
-        btnReader.className = 'px-3 py-1.5 rounded-lg text-slate-300 hover:text-white transition-all';
+        btnPdf.classList.add('bg-amber-400', 'text-slate-950');
+        btnPdf.classList.remove('text-slate-300', 'hover:text-white');
+        btnReader.classList.remove('bg-amber-400', 'text-slate-950');
+        btnReader.classList.add('text-slate-300', 'hover:text-white');
       } else {
         document.getElementById('handbook-modal').classList.remove('pdf-expanded');
         pdfView.classList.add('hidden');
         readerView.classList.remove('hidden');
-        btnReader.className = 'px-3 py-1.5 rounded-lg bg-amber-400 text-slate-950 transition-all';
-        btnPdf.className = 'px-3 py-1.5 rounded-lg text-slate-300 hover:text-white transition-all';
+        btnReader.classList.add('bg-amber-400', 'text-slate-950');
+        btnReader.classList.remove('text-slate-300', 'hover:text-white');
+        btnPdf.classList.remove('bg-amber-400', 'text-slate-950');
+        btnPdf.classList.add('text-slate-300', 'hover:text-white');
       }
     }
 
